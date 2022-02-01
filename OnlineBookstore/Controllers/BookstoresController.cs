@@ -19,7 +19,7 @@ namespace OnlineBookstore.Controllers
         public async Task<IActionResult> Index()
         {
             var allBookstores = await _context.Bookstores.ToListAsync();
-            return View();
+            return View(allBookstores);
         }
     }
 }

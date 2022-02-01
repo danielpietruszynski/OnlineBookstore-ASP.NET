@@ -18,8 +18,8 @@ namespace OnlineBookstore.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var allBooks = await _context.Books.ToListAsync();
-            return View();
+            var allBooks = await _context.Books.Include(n => n.Bookstore).OrderBy(n => n.Title).ToListAsync();
+            return View(allBooks);
         }
     }
 }

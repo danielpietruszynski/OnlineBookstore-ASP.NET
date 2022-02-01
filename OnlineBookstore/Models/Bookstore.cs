@@ -10,8 +10,11 @@ namespace OnlineBookstore.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Bookstore Logo")]
         public string Logo { get; set; }
+        [Display(Name = "Bookstore Name")]
         public string Name { get; set; }
+        [Display(Name = "Address")]
         public string Address { get; set; }
 
         //Relationships

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineBookstore.Data;
+using OnlineBookstore.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,22 @@ namespace OnlineBookstore.Controllers
 {
     public class AuthorsController : Controller
     {
-        private readonly AppDbContext _context;
-
-        public AuthorsController(AppDbContext context)
+        private readonly IAuthorsService _service;
+        public AuthorsController(IAuthorsService service)
         {
-            _context = context;
+            _service = service;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var data = _context.Authors.ToList();
+            var data = await _service.GetAll();
             return View(data);
+        }
+
+        
+        //Get: Authors/Create
+        public IActionResult Create()
+        {
+            return View();
         }
     }
 }
