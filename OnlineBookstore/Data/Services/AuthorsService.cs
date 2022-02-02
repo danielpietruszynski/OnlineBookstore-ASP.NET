@@ -14,30 +14,24 @@ namespace OnlineBookstore.Data.Services
         {
             _context = context;
         }
-        public void Add(Author author)
+        public async Task AddAsync(Author author)
         {
-            throw new NotImplementedException();
+            await _context.Authors.AddAsync(author);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Authors.FirstOrDefaultAsync(n => n.Id == id);
+            _context.Authors.Remove(result);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Author>> GetAll()
+        public async Task<Author> UpdateAsync(int id, Author newAuthor)
         {
-            var result = await _context.Authors.ToListAsync();
-            return result;
-        }
-
-        public Author GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Author Update(int id, Author newAuthor)
-        {
-            throw new NotImplementedException();
+            _context.Update(newAuthor);
+            await _context.SaveChangesAsync();
+            return newAuthor;
         }
     }
 }
