@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace OnlineBookstore.Data.Services
 {
-    public interface IAuthorsService:IEntityBaseRepository<Author>
+    public class BookstoresService:EntityBaseRepository<Bookstore>, IBookstoresService
     {
+        public BookstoresService(AppDbContext context) : base(context)
+        {
 
+        }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OnlineBookstore.Data.Services
 {
-    public interface IAuthorsService:IEntityBaseRepository<Author>
+    public interface IPublishersService:IEntityBaseRepository<Publisher>
     {
 
     }

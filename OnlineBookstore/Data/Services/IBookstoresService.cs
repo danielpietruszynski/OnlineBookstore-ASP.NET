@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace OnlineBookstore.Data.Services
 {
-    public interface IAuthorsService:IEntityBaseRepository<Author>
+    public interface IBookstoresService:IEntityBaseRepository<Bookstore>
     {
-
+        Task<Book> GetBookByIdAsync(int id);
     }
 }

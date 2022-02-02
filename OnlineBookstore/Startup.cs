@@ -31,7 +31,9 @@ namespace OnlineBookstore
 
             //Services configuration
             services.AddScoped<IAuthorsService, AuthorsService>();
-            
+            services.AddScoped<IPublishersService, PublishersService>();
+            services.AddScoped<IBookstoresService, BookstoresService>();
+            services.AddScoped<IBooksService, BooksService>();
             services.AddControllersWithViews();
         }
 

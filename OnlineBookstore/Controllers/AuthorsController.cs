@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineBookstore.Data;
 using OnlineBookstore.Data.Services;
 using OnlineBookstore.Models;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace OnlineBookstore.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class AuthorsController : Controller
     {
         private readonly IAuthorsService _service;
@@ -16,6 +18,7 @@ namespace OnlineBookstore.Controllers
         {
             _service = service;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var data = await _service.GetAllAsync();
@@ -41,6 +44,7 @@ namespace OnlineBookstore.Controllers
         }
 
         //Get: Authors/Details/1
+        [AllowAnonymous]
         public async Task <IActionResult> Details(int id)
         {
             var authorDetails = await _service.GetByIdAsync(id);
