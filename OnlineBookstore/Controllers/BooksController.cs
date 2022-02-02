@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OnlineBookstore.Data;
 using OnlineBookstore.Data.Services;
+using OnlineBookstore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,7 @@ namespace OnlineBookstore.Controllers
         //GET: Books/Create
         public async Task<IActionResult> Create()
         {
-            var bookDropdownsData = await _service.GetNewBookDropdownsValues();
+            var bookDropdownsData = await _service.GetNewBookDropdownValues();
 
             ViewBag.Bookstores = new SelectList(bookDropdownsData.Bookstores, "Id", "Name");
             ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");
@@ -65,11 +66,11 @@ namespace OnlineBookstore.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(NewBookVM book)
+        public async Task<IActionResult> Create(newBookVM book)
         {
             if (!ModelState.IsValid)
             {
-                var bookDropdownsData = await _service.GetNewBookDropdownsValues();
+                var bookDropdownsData = await _service.GetNewBookDropdownValues();
 
                 ViewBag.Bookstores = new SelectList(bookDropdownsData.Bookstores, "Id", "Name");
                 ViewBag.Producers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");
@@ -89,21 +90,21 @@ namespace OnlineBookstore.Controllers
             var bookDetails = await _service.GetBookByIdAsync(id);
             if (bookDetails == null) return View("NotFound");
 
-            var response = new NewBookVM()
+            var response = new newBookVM()
             {
                 Id = bookDetails.Id,
-                Title = bookDetails.Name,
+                Title = bookDetails.Title,
                 Description = bookDetails.Description,
                 Price = bookDetails.Price,
-                Premiere = bookDetails.StartDate,
-                BookCoverURL = bookDetails.ImageURL,
+                Premiere = bookDetails.Premiere,
+                BookCoverURL = bookDetails.BookCoverURL,
                 BookCategory = bookDetails.BookCategory,
                 BookstoreId = bookDetails.BookstoreId,
-                PublishersId = bookDetails.PublisherId,
-                AuthorsIds = bookDetails.Authors_Books.Select(n => n.AuthorsId).ToList(),
+                PublisherId = bookDetails.PublisherId,
+                AuthorsIds = bookDetails.Authors_Books.Select(n => n.AuthorId).ToList(),
             };
 
-            var bookDropdownsData = await _service.GetNewBookDropdownsValues();
+            var bookDropdownsData = await _service.GetNewBookDropdownValues();
             ViewBag.Cinemas = new SelectList(bookDropdownsData.Bookstores, "Id", "Name");
             ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");
             ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName");
@@ -112,13 +113,13 @@ namespace OnlineBookstore.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, NewBookVM book)
+        public async Task<IActionResult> Edit(int id, newBookVM book)
         {
             if (id != book.Id) return View("NotFound");
 
             if (!ModelState.IsValid)
             {
-                var bookDropdownsData = await _service.GetNewBookDropdownsValues();
+                var bookDropdownsData = await _service.GetNewBookDropdownValues();
 
                 ViewBag.Bookstores = new SelectList(bookDropdownsData.Bookstores, "Id", "Name");
                 ViewBag.Producers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");

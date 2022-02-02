@@ -11,6 +11,7 @@ namespace OnlineBookstore.Models
 {
     public class newBookVM
     {
+        public int Id { get; set; }
         [Required(ErrorMessage = "Title is requied")]
         [Display(Name = "Book title")]
         public string Title { get; set; }
