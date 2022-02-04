@@ -123,7 +123,7 @@ namespace OnlineBookstore.Data
                         Email = adminUserEmail,
                         EmailConfirmed = true
                     };
-                    await userManager.CreateAsync(newAdminUser, "bookstore@1234");
+                    await userManager.CreateAsync(newAdminUser, "Bookstore@1234");
                     await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
                 }
 
@@ -140,7 +140,7 @@ namespace OnlineBookstore.Data
                         Email = appUserEmail,
                         EmailConfirmed = true
                     };
-                    await userManager.CreateAsync(newAppUser, "bookstore@1234");
+                    await userManager.CreateAsync(newAppUser, "Bookstore@1234");
                     await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
                 }
             }

@@ -11,12 +11,6 @@ namespace OnlineBookstore.Data.Services
     {
         public BookstoresService(AppDbContext context) : base(context)
         {
-
-        }
-
-        public Task<Book> GetBookByIdAsync(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -9,6 +9,5 @@ namespace OnlineBookstore.Data.Services
 {
     public interface IBookstoresService:IEntityBaseRepository<Bookstore>
     {
-        Task<Book> GetBookByIdAsync(int id);
     }
 }

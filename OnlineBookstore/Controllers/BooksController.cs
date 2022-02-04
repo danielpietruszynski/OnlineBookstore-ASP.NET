@@ -107,7 +107,7 @@ namespace OnlineBookstore.Controllers
             };
 
             var bookDropdownsData = await _service.GetNewBookDropdownValues();
-            ViewBag.Cinemas = new SelectList(bookDropdownsData.Bookstores, "Id", "Name");
+            ViewBag.Bookstores = new SelectList(bookDropdownsData.Bookstores, "Id", "Name");
             ViewBag.Publishers = new SelectList(bookDropdownsData.Publishers, "Id", "FullName");
             ViewBag.Authors = new SelectList(bookDropdownsData.Authors, "Id", "FullName");
 

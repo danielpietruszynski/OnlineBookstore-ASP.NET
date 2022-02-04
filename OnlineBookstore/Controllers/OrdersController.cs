@@ -36,11 +36,6 @@ namespace OnlineBookstore.Controllers
             return View(orders);
         }
 
-        private bool ClaimsTypes(Claim obj)
-        {
-            throw new NotImplementedException();
-        }
-
         public IActionResult ShoppingCart()
         {
             var items = _shoppingCart.GetShoppingCartItems();
