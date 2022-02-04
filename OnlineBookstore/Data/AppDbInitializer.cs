@@ -71,7 +71,7 @@ namespace OnlineBookstore.Data
                         {
                             Title = "Szukając Alaski",
                             Description = "Cool book",
-                            Price = 28.90,
+                            Price = 23,
                             BookCoverURL = "http://s.lubimyczytac.pl/upload/books/188000/188946/170383-352x500.jpg",
                             Premiere = DateTime.Now.AddDays(-100),
                             BookstoreId = 1,

@@ -60,7 +60,7 @@ namespace OnlineBookstore.Controllers
         
         
         }
-        public async Task<IActionResult> RemoveItemToShoppingCart(int id)
+        public async Task<IActionResult> RemoveItemFromShoppingCart(int id)
         {
             var item = await _booksService.GetBookByIdAsync(id);
 

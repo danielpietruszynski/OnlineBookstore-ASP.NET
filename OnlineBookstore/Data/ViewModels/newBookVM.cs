@@ -19,7 +19,7 @@ namespace OnlineBookstore.Models
         [Display(Name = "Book description")]
         public string Description { get; set; }
         [Required(ErrorMessage = "Price is required")]
-        [Display(Name = "Price in $")]
+        [Display(Name = "Price in USD")]
         public double Price { get; set; }
         [Required(ErrorMessage = "Book Cover is requied")]
         [Display(Name = "Book cover")]
