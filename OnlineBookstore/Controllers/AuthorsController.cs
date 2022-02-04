@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineBookstore.Data;
 using OnlineBookstore.Data.Services;
+using OnlineBookstore.Data.Static;
 using OnlineBookstore.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace OnlineBookstore.Controllers
 {
     [Authorize(Roles = UserRoles.Admin)]
+    
     public class AuthorsController : Controller
     {
         private readonly IAuthorsService _service;

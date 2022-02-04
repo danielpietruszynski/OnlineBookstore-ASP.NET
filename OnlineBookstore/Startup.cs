@@ -1,12 +1,17 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OnlineBookstore.Data;
+using OnlineBookstore.Data.Cart;
 using OnlineBookstore.Data.Services;
+using OnlineBookstore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +39,23 @@ namespace OnlineBookstore
             services.AddScoped<IPublishersService, PublishersService>();
             services.AddScoped<IBookstoresService, BookstoresService>();
             services.AddScoped<IBooksService, BooksService>();
+            services.AddScoped<IOrdersService, OrdersService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddMemoryCache();
+            
+            services.AddSession();
+            services.AddAuthentication(options => 
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
+
             services.AddControllersWithViews();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +75,9 @@ namespace OnlineBookstore
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
@@ -66,6 +90,7 @@ namespace OnlineBookstore
 
             //Seed database
             AppDbInitializer.Seed(app);
+            AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
         }
     }
 }

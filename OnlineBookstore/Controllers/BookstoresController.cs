@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineBookstore.Data;
 using OnlineBookstore.Data.Services;
+using OnlineBookstore.Data.Static;
 using OnlineBookstore.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace eTickets.Controllers
 {
     [Authorize(Roles = UserRoles.Admin)]
+    
     public class BookstoresController : Controller
     {
         private readonly IBookstoresService _service;

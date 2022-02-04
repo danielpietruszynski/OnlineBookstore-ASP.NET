@@ -1,4 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using OnlineBookstore.Data;
+using OnlineBookstore.Data.Static;
+using OnlineBookstore.Data.ViewModels;
+using OnlineBookstore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

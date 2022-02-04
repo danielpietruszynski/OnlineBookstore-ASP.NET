@@ -13,5 +13,10 @@ namespace OnlineBookstore.Data.Services
         {
 
         }
+
+        public Task<Book> GetBookByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

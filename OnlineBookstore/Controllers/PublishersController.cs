@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineBookstore.Data;
 using OnlineBookstore.Data.Services;
+using OnlineBookstore.Data.Static;
 using OnlineBookstore.Models;
 using System;
 using System.Collections.Generic;

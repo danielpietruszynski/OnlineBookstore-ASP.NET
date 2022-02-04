@@ -23,23 +23,32 @@
                             <a class="nav-link text-dark" asp-controller="Books" asp-action="Index"> <i class="badge-info bi-book-half"></i>Books</a>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bi bi-gear"></i> Management
-                            </a>
+                        @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bi bi-gear"></i> Management
+                        </a>
 
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-controller="Bookstores" asp-action="Index"><i class="bi bi-book"></i> Bookstores</a>
-                                <a class="dropdown-item" asp-controller="Publishers" asp-action="Index"><i class="bi bi-blockquote-left"></i> Publishers</a>
-                                <a class="dropdown-item" asp-controller="Authors" asp-action="Index"><i class="bi bi-person-square"></i> Authors</a>
-                            </div>
-                        </li>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-controller="Bookstores" asp-action="Index"><i class="bi bi-book"></i> Bookstores</a>
+                            <a class="dropdown-item" asp-controller="Publishers" asp-action="Index"><i class="bi bi-blockquote-left"></i> Publishers</a>
+                            <a class="dropdown-item" asp-controller="Authors" asp-action="Index"><i class="bi bi-person-square"></i> Authors</a>
+                        </div>
+                    </li>
+            }
+                        
                     </ul>
 
                     <form class="form-inline my-2 my-lg-0" asp-controller="Books" asp-action="Filter" style="padding-right: 25px;">
                         <input name="searchString" type="text" class="form-control" placeholder="Search for a movie...">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
                     </form>
+
+                    <ul class="navbar-nav">
+                        @await Component.InvokeAsync("ShoppingCartSummary")
+                    </ul>
+                    <partial name="_Identity.cshtm" />
                 </div>
             </div>
         </nav>
