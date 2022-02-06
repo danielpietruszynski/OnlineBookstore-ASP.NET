@@ -38,6 +38,7 @@ namespace OnlineBookstore.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
+                //var filteredResult = allBooks.Where(n => n.Title.ToLower().Contains(searchString.ToLower()) || n.Description.ToLower().Contains(searchString.ToLower())).ToList();
 
                 var filteredResultNew = allBooks.Where(n => string.Equals(n.Title, searchString, StringComparison.CurrentCultureIgnoreCase) || string.Equals(n.Description, searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
 
