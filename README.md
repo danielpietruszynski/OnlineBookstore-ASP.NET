@@ -14,7 +14,7 @@ Program został napisany w języku C# z wykorzystaniem HTMLa, Bootstrapa oraz ś
 ## Opis działania
 Plik zawiera kod do aplikacji, która daje możliwość kupowania książek w dostępnych internetowych księgarniach.
 
-Funckjonalność dla użytkownika:
+Funkcjonalność dla użytkownika:
 
 Użytkownik przed kupieniem książki może zapoznać się z jej szczegółami takimi jak autor, wydawnictwo, cena, data jej premiery oraz księgarnia, w której aktualnie książka się znajduje.
 Dzięki tzw. "lupce" może on wyszukać interesującą go książkę po tytule lub opisie. 
